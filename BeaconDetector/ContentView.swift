@@ -44,7 +44,7 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
-        print("didRange Event beacons:---------------------------------------------------------------------------------")
+        print("didRange Event beacons:-----------------------------------------------------------------------------------------------------------------------")
         if let beacon = beacons.first {
             print("beacon:",beacon)
             update(distance: beacon.proximity)
