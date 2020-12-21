@@ -15,6 +15,8 @@
 		64AAD0652584F96D0062C923 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64AAD0632584F96D0062C923 /* LaunchScreen.storyboard */; };
 		64AAD0702584F96D0062C923 /* BeaconDetectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AAD06F2584F96D0062C923 /* BeaconDetectorTests.swift */; };
 		64AAD07B2584F96E0062C923 /* BeaconDetectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AAD07A2584F96E0062C923 /* BeaconDetectorUITests.swift */; };
+		CFCAD22D2590E41600D14595 /* ContentInsideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCAD22C2590E41600D14595 /* ContentInsideView.swift */; };
+		CFCAD2322590EA7600D14595 /* ContentText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCAD2312590EA7600D14595 /* ContentText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		64AAD0762584F96E0062C923 /* BeaconDetectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaconDetectorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64AAD07A2584F96E0062C923 /* BeaconDetectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconDetectorUITests.swift; sourceTree = "<group>"; };
 		64AAD07C2584F96E0062C923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFCAD22C2590E41600D14595 /* ContentInsideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentInsideView.swift; sourceTree = "<group>"; };
+		CFCAD2312590EA7600D14595 /* ContentText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				64AAD0632584F96D0062C923 /* LaunchScreen.storyboard */,
 				64AAD0662584F96D0062C923 /* Info.plist */,
 				64AAD0602584F96D0062C923 /* Preview Content */,
+				CFCAD22C2590E41600D14595 /* ContentInsideView.swift */,
+				CFCAD2312590EA7600D14595 /* ContentText.swift */,
 			);
 			path = BeaconDetector;
 			sourceTree = "<group>";
@@ -266,8 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCAD22D2590E41600D14595 /* ContentInsideView.swift in Sources */,
 				64AAD0592584F96D0062C923 /* AppDelegate.swift in Sources */,
 				64AAD05B2584F96D0062C923 /* SceneDelegate.swift in Sources */,
+				CFCAD2322590EA7600D14595 /* ContentText.swift in Sources */,
 				64AAD05D2584F96D0062C923 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
