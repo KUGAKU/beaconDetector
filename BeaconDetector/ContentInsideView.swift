@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentInsideView: View {
-    var contentText: ContentText
+    let contentText: ContentText
 
     var body: some View {
         Text(contentText.getText())
