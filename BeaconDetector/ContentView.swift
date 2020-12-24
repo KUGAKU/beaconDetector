@@ -5,7 +5,10 @@ import CoreLocation
 class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
     var didChange = PassthroughSubject<CLProximity, Never>()
     var locationManager:  CLLocationManager?
-    var lastDistance = CLProximity.unknown
+    @Published var lastDistance = CLProximity.unknown
+
+    // これはデバック用
+    private var cancellables = Set<AnyCancellable>()
     
     override init() {
         super.init()
@@ -13,6 +16,16 @@ class BeaconDetector: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.requestAlwaysAuthorization()
+
+        // 以下Debugコード　initから3秒後に.nearを飛ばしてあげる
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3000)) {
+            self.lastDistance = .near
+        }
+
+        // これでPublishedに値が流れてくるのを確認できる
+        $lastDistance.sink { receive in
+            print("ContentView: recieve", receive.rawValue)
+        }.store(in: &cancellables)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -75,33 +88,10 @@ struct BigText: ViewModifier {
 }
 
 struct ContentView: View {
-    @ObservedObject var detector = BeaconDetector()
+    @StateObject var detector = BeaconDetector()
+
     var body: some View {
-        if detector.lastDistance == .immediate {
-            return Text("RIGHT HERE")
-                .modifier(BigText())
-                .background(Color.gray)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-        } else if detector.lastDistance == .near{
-            return Text("NEAR")
-                .modifier(BigText())
-                .background(Color.gray)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-        } else if (detector.lastDistance == .far) {
-            return Text("FAR")
-                .modifier(BigText())
-                .background(Color.gray)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-        } else {
-            return Text("iBeacon Detector")
-                .modifier(BigText())
-                .background(Color.gray)
-                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
-        }
+        ContentInsideView(contentText: ContentText(clProximity: detector.lastDistance))
     }
 }
 
